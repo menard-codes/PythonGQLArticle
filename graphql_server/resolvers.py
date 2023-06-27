@@ -11,18 +11,28 @@ class QueryResolver:
     @staticmethod
     def get_tasks(pagination: (schemas.PaginationInput | None) = None) -> List[schemas.Task]:
         db = DBSession()
-        if pagination is None:
-            tasks = db.query(models.Task).all()
-            return tasks
-        else:
-            tasks = db.query(models.Task).offset(
-                pagination.offset).limit(pagination.limit).all()
-            return tasks
+
+        try:
+            query = db.query(models.Task)
+
+            if pagination is not None:
+                query = query\
+                    .offset(pagination.offset)\
+                    .limit(pagination.limit)
+
+            tasks = query.all()
+        finally:
+            db.close()
+        return tasks
 
     @staticmethod
     def get_task(task_id: ID) -> (schemas.Task | None):
         db = DBSession()
-        task = db.query(models.Task).filter(models.Task.id == task_id).first()
+        try:
+            task = db.query(models.Task).filter(
+                models.Task.id == task_id).first()
+        finally:
+            db.close()
         return task
 
 
