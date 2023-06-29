@@ -4,6 +4,11 @@ This project is part of the article I wrote for [ThePythonCode.com](https://thep
 
 It is a tutorial on how to build a GraphQL API in Python using FastAPI (for route handling), Strawberry (for Schema definition and everything GraphQL), and Postgres (the database).
 
+## Prerequisites
+
+1. [ElephantSQL Account (optional)](https://www.elephantsql.com/) - If you decided to use Postgres (like in the tutorial) and decided to go for the managed Postgres DB option
+2. Python3: ^3.11.0
+
 ## Getting Starteted
 
 1. Fork this repo.
@@ -36,10 +41,23 @@ It is a tutorial on how to build a GraphQL API in Python using FastAPI (for rout
    pip3 install -r requirements.txt
    ```
 
-6. Run the server
+6. Add your Database URL - Create a `.env` file, add your DATABASE URL, and access it in the `database.py` file:
+
+   ```bash
+   # .env file
+   DB_URL='<YOUR DATABASE URL HERE>'
+   ```
+
+   ```python
+   # models/database.py
+   ...
+   SQLALCHEMY_DATABASE_URL = config("DB_URL")
+   ```
+
+7. Run the server
 
    ```bash
    uvicorn main:app --reload
    ```
 
-7. Open [http://localhost:8000/graphql](http://localhost:8000/graphql) in your browser.
+8. Open [http://localhost:8000/graphql](http://localhost:8000/graphql) in your browser.
