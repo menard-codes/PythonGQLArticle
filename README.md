@@ -2,9 +2,16 @@
 
 This project is part of the article I wrote for [ThePythonCode.com](https://thepythoncode.com).
 
+You can check out the article using this link:
+
+[https://www.thepythoncode.com/article/build-a-graphql-api-with-fastapi-strawberry-and-postgres-python](
+https://www.thepythoncode.com/article/build-a-graphql-api-with-fastapi-strawberry-and-postgres-python)
+
 It is a tutorial on how to build a GraphQL API in Python using FastAPI (for route handling), Strawberry (for Schema definition and everything GraphQL), and Postgres (the database).
 
 ## Prerequisites
+
+If you decided to follow along the tutorial (or just to run this project), first, make sure you have:
 
 1. [ElephantSQL Account (optional)](https://www.elephantsql.com/) - If you decided to use Postgres (like in the tutorial) and decided to go for the managed Postgres DB option
 2. Python3: ^3.11.0
